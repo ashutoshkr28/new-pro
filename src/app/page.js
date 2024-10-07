@@ -3,9 +3,8 @@
 // import Navbar from '../components/Navbar';
 
 import AuthForm from "./components/auth/page";
-// import Login from "./components/logIn/page";
+import HeroSection from "./components/home/page";
 import Navbar from "./components/navbar/page";
-// import SignUp from "./components/signup/page";
 
 export default function Home() {
   // { Component, pageProps }
@@ -13,9 +12,8 @@ export default function Home() {
     <>
       <Navbar />
       {/* <Component {...pageProps} /> */}
-      {/* <Login></Login>
+      <HeroSection></HeroSection>
 
-      <SignUp></SignUp> */}
 
       <AuthForm></AuthForm>
       
