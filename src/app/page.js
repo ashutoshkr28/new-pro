@@ -3,6 +3,7 @@
 // import Navbar from '../components/Navbar';
 
 import AuthForm from "./components/auth/page";
+import ContactSection from "./components/contact/page";
 import HeroSection from "./components/home/page";
 import Navbar from "./components/navbar/page";
 
@@ -16,6 +17,8 @@ export default function Home() {
 
 
       <AuthForm></AuthForm>
+
+      <ContactSection></ContactSection>
       
       
 

@@ -1,18 +1,23 @@
-'use client'
+'use client';
 
-// components/Navbar.js
 import { useState } from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';  // Correct import for App Router
 
-const  Navbar= () => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();  // Initialize useRouter for navigating
+
+  const handleNavigation = (path) => {
+    setIsOpen(false);  // Close the mobile menu when navigating
+    router.push(path); // Navigate to the specified path
+  };
 
   return (
     <nav className="bg-gray-800 p-4">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        <div className="text-white text-xl font-bold">
-          <Link href="/logIn">Logo</Link>
+        <div className="text-white text-xl font-bold cursor-pointer" onClick={() => handleNavigation('/')}>
+          Logo
         </div>
 
         {/* Hamburger menu (for mobile) */}
@@ -57,18 +62,18 @@ const  Navbar= () => {
 
         {/* Menu links for desktop */}
         <div className="hidden md:flex space-x-6">
-          <Link href="/" className="text-white hover:text-gray-300">
+          <button onClick={() => handleNavigation('//HeroSection')} className="text-white hover:text-gray-300">
             Home
-          </Link>
-          <Link href="/" className="text-white hover:text-gray-300">
+          </button>
+          <button onClick={() => handleNavigation('/about')} className="text-white hover:text-gray-300">
             About
-          </Link>
-          <Link href="/" className="text-white hover:text-gray-300">
+          </button>
+          <button onClick={() => handleNavigation('/course')} className="text-white hover:text-gray-300">
             Course
-          </Link>
-          <Link href="/" className="text-white hover:text-gray-300">
+          </button>
+          <button onClick={() => handleNavigation('/contact')} className="text-white hover:text-gray-300">
             Contact
-          </Link>
+          </button>
         </div>
       </div>
 
@@ -76,25 +81,23 @@ const  Navbar= () => {
       {isOpen && (
         <div className="md:hidden">
           <div className="flex flex-col space-y-4 mt-4">
-            <Link href="/" className="text-white hover:text-gray-300">
+            <button onClick={() => handleNavigation('/HeroSection')} className="text-white hover:text-gray-300">
               Home
-            </Link>
-            <Link href="/about" className="text-white hover:text-gray-300">
+            </button>
+            <button onClick={() => handleNavigation('/about')} className="text-white hover:text-gray-300">
               About
-            </Link>
-            <Link href="/logIn" className="text-white hover:text-gray-300">
+            </button>
+            <button onClick={() => handleNavigation('/course')} className="text-white hover:text-gray-300">
               Course
-            </Link>
-            <Link href="/contact" className="text-white hover:text-gray-300">
+            </button>
+            <button onClick={() => handleNavigation('/contact')} className="text-white hover:text-gray-300">
               Contact
-            </Link>
+            </button>
           </div>
         </div>
       )}
     </nav>
   );
-}
-
-
+};
 
 export default Navbar;
