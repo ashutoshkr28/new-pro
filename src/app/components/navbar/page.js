@@ -1,30 +1,51 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';  // Correct import for App Router
+import Link from 'next/link';
 
-const Navbar = () => {
+const Navbar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();  // Initialize useRouter for navigating
 
-  const handleNavigation = (path) => {
-    setIsOpen(false);  // Close the mobile menu when navigating
-    router.push(path); // Navigate to the specified path
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
   };
 
+  const NavLinks = () => (
+    <>
+      <Link href="/" className="text-white hover:text-gray-300">
+        Home
+      </Link>
+      <Link href="/about" className="text-white hover:text-gray-300">
+        About
+      </Link>
+      <Link href="/course" className="text-white hover:text-gray-300">
+        Course
+      </Link>
+      <Link href="/contact" className="text-white hover:text-gray-300">
+        Contact
+      </Link>
+      <Link href="/auth" className="text-white hover:text-gray-300 bg-blue-500 rounded-md w-fit p-1">
+        Login
+      </Link>
+    </>
+  );
+
   return (
-    <nav className="bg-gray-800 p-4">
+    <nav className="bg-gray-800 p-3">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        <div className="text-white text-xl font-bold cursor-pointer" onClick={() => handleNavigation('/')}>
+        <Link href="/" className="text-white text-xl font-bold cursor-pointer">
           Logo
-        </div>
+        </Link>
+        {children}
 
         {/* Hamburger menu (for mobile) */}
         <div className="block md:hidden">
           <button
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={handleToggle}
             className="text-white focus:outline-none"
+            aria-label="Toggle menu"
+            aria-expanded={isOpen}
           >
             {isOpen ? (
               <svg
@@ -62,37 +83,15 @@ const Navbar = () => {
 
         {/* Menu links for desktop */}
         <div className="hidden md:flex space-x-6">
-          <button onClick={() => handleNavigation('//HeroSection')} className="text-white hover:text-gray-300">
-            Home
-          </button>
-          <button onClick={() => handleNavigation('/about')} className="text-white hover:text-gray-300">
-            About
-          </button>
-          <button onClick={() => handleNavigation('/course')} className="text-white hover:text-gray-300">
-            Course
-          </button>
-          <button onClick={() => handleNavigation('/contact')} className="text-white hover:text-gray-300">
-            Contact
-          </button>
+          <NavLinks />
         </div>
       </div>
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden">
+        <div className="md:hidden transition-transform duration-300 ease-in-out">
           <div className="flex flex-col space-y-4 mt-4">
-            <button onClick={() => handleNavigation('/HeroSection')} className="text-white hover:text-gray-300">
-              Home
-            </button>
-            <button onClick={() => handleNavigation('/about')} className="text-white hover:text-gray-300">
-              About
-            </button>
-            <button onClick={() => handleNavigation('/course')} className="text-white hover:text-gray-300">
-              Course
-            </button>
-            <button onClick={() => handleNavigation('/contact')} className="text-white hover:text-gray-300">
-              Contact
-            </button>
+            <NavLinks />
           </div>
         </div>
       )}

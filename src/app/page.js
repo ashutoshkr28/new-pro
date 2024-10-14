@@ -1,23 +1,17 @@
 
-// import '../styles/globals.css';
-// import Navbar from '../components/Navbar';
-
-import AuthForm from "./components/auth/page";
-import ContactSection from "./components/contact/page";
-import HeroSection from "./components/home/page";
-import Navbar from "./components/navbar/page";
+import ContactSection from "./contact/page";
+import HeroSection from "./home/page";
+import Post from "./post/page";
+// import TeacherInfo from "./teacher/page";
 
 export default function Home() {
   // { Component, pageProps }
   return (
     <>
-      <Navbar />
-      {/* <Component {...pageProps} /> */}
       <HeroSection></HeroSection>
-
-
-      <AuthForm></AuthForm>
-
+      <Post></Post>
+      {/* <TeacherInfo></TeacherInfo> */}
+      {/* <ContactSectionn></ContactSectionn> */}
       <ContactSection></ContactSection>
       
       
