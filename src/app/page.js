@@ -8,7 +8,8 @@ export default function Home() {
   // { Component, pageProps }
   return (
     <>
-      <HeroSection></HeroSection>
+     
+       <HeroSection></HeroSection>
       <Post></Post>
       <ContactSection></ContactSection>
       
