@@ -24,7 +24,7 @@ const Navbar = ({ children }) => {
       <Link href="/contact" className="text-white hover:text-gray-300">
         Contact
       </Link>
-      <Link href="/auth" className="text-white hover:text-gray-300 bg-blue-500 rounded-md w-fit p-1">
+      <Link href="/login" className="text-white hover:text-gray-300 bg-blue-500 rounded-md w-fit p-1">
         Login
       </Link>
     </>
